@@ -108,8 +108,18 @@ const Footer = () => {
                   </Link>
                 </li>
                 <li className="text-sm">
+                  <Link to={`tel:${companyDetails.phone1}`} className="link">
+                    {companyDetails.phone1}
+                  </Link>
+                </li>
+                <li className="text-sm">
                   <Link to={`mailto:${companyDetails.email}`} className="link">
                     {companyDetails.email}
+                  </Link>
+                </li>
+                <li className="text-sm">
+                  <Link to={`mailto:${companyDetails.email1}`} className="link">
+                    {companyDetails.email1}
                   </Link>
                 </li>
                 <li className="text-sm max-w-sm">{companyDetails.address}</li>

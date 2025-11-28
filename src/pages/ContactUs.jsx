@@ -32,6 +32,7 @@ const ContactUs = () => {
               <div className="space-y-1 text-black">
                 <h6 className="text4">Mobile Number</h6>
                 <p>{companyDetails.phone}</p>
+                <p>{companyDetails.phone1}</p>
               </div>
             </div>
             <div className="flex lg:justify-center gap-3">
@@ -50,6 +51,7 @@ const ContactUs = () => {
               <div className="space-y-1 text-black">
                 <h6 className="text4">Have Enquiries?</h6>
                 <p>{companyDetails.email}</p>
+                <p>{companyDetails.email1}</p>
               </div>
             </div>
           </div>

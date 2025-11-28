@@ -4,7 +4,9 @@ export { logo };
 
 export const companyDetails = {
   phone: "+91-7303220608",
+  phone1: "+91-7292090234",
   email: "denishthangjam@gmail.com",
+  email1: "orvantaai.official@gmail.com",
   address: "Changangei Mayai Leikai Road, Imphal West, Manipur, 795140",
   facebook: "https://www.facebook.com/pages/?category=your_pages&ref=bookmarks",
   twitter: "https://twitter.com/thangjam_d63217",
