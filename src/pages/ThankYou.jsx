@@ -7,10 +7,19 @@ import { FaFacebookF, FaLinkedinIn } from "react-icons/fa";
 import { ImPhone } from "react-icons/im";
 import { IoMail } from "react-icons/io5";
 import Footer from "../components/landingpage/Footer";
+import { Helmet } from "react-helmet";
 
 const ThankYou = () => {
   return (
     <div className="flex flex-col justify-between min-h-screen">
+      <Helmet>
+        <title>Thank You | Orvanta AI</title>
+        <meta
+          name="description"
+          content="Thank you for contacting Orvanta AI. Our team has received your message and will get back to you shortly."
+        />
+        <link href="https://www.orvantaai.com/thank-you" rel="canonical" />
+      </Helmet>
       <div className="fixed top-0 left-0 w-full z-[100]">
         <div className="hidden md:block relative bg-white text-black">
           <div className="hidden md:grid grid-cols-[1fr_30%] lg:grid-cols-[1fr_25%] bg-white">

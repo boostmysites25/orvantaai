@@ -4,10 +4,31 @@ import { FaCalendarAlt, FaArrowRight } from "react-icons/fa";
 import { blogs } from "../content/blogs";
 import PageBanner from "../components/website/PageBanner";
 import banner from "../assets/videos/blogs.mp4";
+import { Helmet } from "react-helmet";
 
 const Blogs = () => {
+  const baseUrl = "https://www.orvantaai.com";
+  const pageUrl = `${baseUrl}/blogs`;
+  const title = "Orvanta AI Blog | Web, Mobile & AI Engineering Insights";
+  const description =
+    "Read expert articles from Orvanta AI on web development, mobile apps, and AI. Stay updated with best practices, case studies, and practical engineering tips.";
+
   return (
     <div className="mt-[5.5rem] lg:mt-[9rem] min-h-screen text-white max-w-[100vw]">
+      <Helmet>
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <link rel="canonical" href={pageUrl} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:url" content={pageUrl} />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content={`${baseUrl}/logo.png`} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={`${baseUrl}/logo.png`} />
+      </Helmet>
       <PageBanner
         banner={banner}
         title="Blogs"

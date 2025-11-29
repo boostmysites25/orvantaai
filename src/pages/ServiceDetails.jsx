@@ -24,6 +24,7 @@ import {
 import { serviceDetailsList } from "../content/services";
 import { createUrlParam } from "../utils/helper";
 import bannerImg from "../assets/images/service-details.webp";
+import { Helmet } from "react-helmet";
 
 const ServiceDetails = () => {
   const { page } = useParams();
@@ -33,8 +34,29 @@ const ServiceDetails = () => {
 
   if (!service) return <Navigate to="/services" replace={true} />;
 
+  const baseUrl = "https://www.orvantaai.com";
+  const pageUrl = `${baseUrl}/services/${page}`;
+  const title = `${service.title} | Orvanta AI Services`;
+  const description =
+    service.shortDescription || service.overview?.substring(0, 160);
+
   return (
     <div className="mt-[5.5rem] lg:mt-[9rem] min-h-screen text-white max-w-[100vw]">
+      <Helmet>
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <link rel="canonical" href={pageUrl} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:url" content={pageUrl} />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content={`${baseUrl}/logo.png`} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={`${baseUrl}/logo.png`} />
+      </Helmet>
+
       {/* Hero Section with Image */}
       <div className="relative overflow-hidden">
         {/* Image with gradient overlay */}

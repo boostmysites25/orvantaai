@@ -9,6 +9,7 @@ import aboutImg from "../assets/images/home-about.webp";
 import { PiStrategyBold } from "react-icons/pi";
 import { MdSecurity } from "react-icons/md";
 import { lazy } from "react";
+import { Helmet } from "react-helmet";
 
 const AllServices = lazy(() => import("../components/website/AllServices"));
 const OurProcess = lazy(() => import("../components/common/OurProcess"));
@@ -17,8 +18,50 @@ const Faq = lazy(() => import("../components/common/Faq"));
 const WhyWorkWithUs = lazy(() => import("../components/common/WhyWorkWithUs"));
 
 const Home = () => {
+  const baseUrl = "https://www.orvantaai.com";
+  const pageUrl = `${baseUrl}/`;
+  const title = "Orvanta AI | Web, Mobile & AI Development Company";
+  const description =
+    "Orvanta AI builds high-performance websites, mobile applications, and AI solutions. We combine modern engineering and design to ship digital products that grow your business.";
+
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "Orvanta AI",
+    url: baseUrl,
+    logo: `${baseUrl}/logo.png`,
+    sameAs: [
+      "https://www.facebook.com/",
+      "https://www.linkedin.com/",
+      "https://www.instagram.com/",
+      "https://x.com/",
+    ],
+    description,
+  };
+
   return (
     <div className="mt-[4.5rem]">
+      <Helmet>
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <link rel="canonical" href={pageUrl} />
+
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:url" content={pageUrl} />
+        <meta property="og:image" content={`${baseUrl}/logo.png`} />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={`${baseUrl}/logo.png`} />
+
+        <script type="application/ld+json">
+          {JSON.stringify(organizationSchema)}
+        </script>
+      </Helmet>
+
       <section className="relative min-h-screen">
         <div className="absolute inset-0 bg-black/60 z-[2]" />
         <ReactPlayer

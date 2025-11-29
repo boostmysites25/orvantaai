@@ -5,13 +5,34 @@ import { PiPhoneCallFill } from "react-icons/pi";
 import { FaLocationDot } from "react-icons/fa6";
 import { lazy } from "react";
 import ContactForm from "../components/common/ContactForm";
+import { Helmet } from "react-helmet";
 
 const MapComponent = lazy(() => import("../components/website/MapComponent"));
 const PageBanner = lazy(() => import("../components/website/PageBanner"));
 
 const ContactUs = () => {
+  const baseUrl = "https://www.orvantaai.com";
+  const pageUrl = `${baseUrl}/contact-us`;
+  const title = "Contact Orvanta AI | Web, Mobile & AI Development Company";
+  const description =
+    "Contact Orvanta AI to discuss your web, mobile app, or AI project. Request a quote or consultation with our engineering team today.";
+
   return (
     <div className="mt-[4.5rem]">
+      <Helmet>
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <link rel="canonical" href={pageUrl} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:url" content={pageUrl} />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content={`${baseUrl}/logo.png`} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={`${baseUrl}/logo.png`} />
+      </Helmet>
       <PageBanner
         banner={banner}
         title="Contact Us"

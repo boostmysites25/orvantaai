@@ -11,6 +11,7 @@ import { PiStrategyBold } from "react-icons/pi";
 import { MdSecurity } from "react-icons/md";
 import { lazy } from "react";
 import ContactForm from "../components/common/ContactForm";
+import { Helmet } from "react-helmet";
 
 const ServicesSection = lazy(() =>
   import("../components/landingpage/ServicesSection")
@@ -25,27 +26,65 @@ const LandingPage = ({ page }) => {
   const isWeb = page === "web";
   const isApp = page === "app";
   const isAI = page === "ai";
-  
+
+  const baseUrl = "https://www.orvantaai.com";
+
   const getPageTitle = () => {
-    if (isWeb) return "Full-Stack Web Development";
-    if (isApp) return "Mobile App Development";
-    return "Artificial Intelligence Solutions";
+    if (isWeb) return "Full-Stack Web Development Services | Orvanta AI";
+    if (isApp) return "Custom Mobile App Development Services | Orvanta AI";
+    return "AI Development & Automation Services | Orvanta AI";
   };
-  
+
+  const getMetaDescription = () => {
+    if (isWeb)
+      return "End-to-end web development with React, Node.js, and modern cloud infrastructure. Orvanta AI builds secure, scalable websites and web apps that convert.";
+    if (isApp)
+      return "Native and cross-platform mobile app development for iOS and Android. Orvanta AI delivers user-first mobile apps from prototype to store launch.";
+    return "AI and machine learning development, including NLP, computer vision, and automation. Orvanta AI helps you turn data into actionable intelligence.";
+  };
+
+  const getCanonicalUrl = () => {
+    if (isWeb) return `${baseUrl}/web-development`;
+    if (isApp) return `${baseUrl}/app-development`;
+    return `${baseUrl}/ai-development`;
+  };
+
   const getHeroTitle = () => {
     if (isWeb) return "Web Solutions";
     if (isApp) return "Mobile Apps";
     return "AI Solutions";
   };
-  
+
   const getHeroDesc = () => {
-    if (isWeb) return "Modern, responsive web applications engineered for speed, security, and scalability.";
-    if (isApp) return "Native and cross-platform apps that deliver exceptional user experiences on any device.";
+    if (isWeb)
+      return "Modern, responsive web applications engineered for speed, security, and scalability.";
+    if (isApp)
+      return "Native and cross-platform apps that deliver exceptional user experiences on any device.";
     return "Intelligent automation and machine learning solutions that transform data into actionable insights.";
   };
-  
+
+  const title = getPageTitle();
+  const description = getMetaDescription();
+  const canonicalUrl = getCanonicalUrl();
+
   return (
     <div id="hero" className="mt-[4.5rem]">
+      <Helmet>
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <link rel="canonical" href={canonicalUrl} />
+
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:image" content={`${baseUrl}/logo.png`} />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={`${baseUrl}/logo.png`} />
+      </Helmet>
       <section className="relative min-h-screen">
         <div className="absolute inset-0 bg-black/60 z-[2]" />
         <ReactPlayer
@@ -80,7 +119,7 @@ const LandingPage = ({ page }) => {
         <div className="wrapper absolute w-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[2] flex flex-col-reverse gap-5 sm:grid grid-cols-[1fr,20%] items-center">
           <div data-aos="fade-up" className="max-w-[45rem] space-y-1">
             <SubHeading
-              heading={getPageTitle()}
+              heading={isWeb ? "Full-Stack Web Development" : isApp ? "Mobile App Development" : "AI Development & Automation"}
               className="text-white"
             />
             <h1 className="text_xl">

@@ -9,11 +9,33 @@ import whyWeExistImg from "../assets/images/why we exist.png";
 import OurCoreValues from "../components/website/OurCoreValues";
 import { lazy } from "react";
 import { FaArrowRightLong } from "react-icons/fa6";
+import { Helmet } from "react-helmet";
+
 const PageBanner = lazy(() => import("../components/website/PageBanner"));
 
 const AboutUs = () => {
+  const baseUrl = "https://www.orvantaai.com";
+  const pageUrl = `${baseUrl}/about-us`;
+  const title = "About Orvanta AI | Web, Mobile & AI Development Team";
+  const description =
+    "Learn about Orvanta AI, a software development company focused on high-performance web, mobile, and AI solutions. Discover our mission, vision, and why businesses trust our engineering.";
+
   return (
     <div className="mt-[4.5rem]">
+      <Helmet>
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <link rel="canonical" href={pageUrl} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:url" content={pageUrl} />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content={`${baseUrl}/logo.png`} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={`${baseUrl}/logo.png`} />
+      </Helmet>
       <PageBanner
         banner={banner}
         title="About Us"
